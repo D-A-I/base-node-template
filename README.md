@@ -1,8 +1,10 @@
 # base-node-template
 
-基底の Node 開発環境
+基底の Node.js 開発環境（vscode + コンテナ）
 
-## バンドルサイズの確認
+## メモ
+
+### バンドルサイズの確認
 
 ```bash
 yarn build --analyze
