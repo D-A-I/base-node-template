@@ -12,6 +12,7 @@
   },
   "extensions": [
     "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
     "joelday.docthis",
   ],
   "postCreateCommand": "yarn install", // コンテナイメージのビルド後にsetup
