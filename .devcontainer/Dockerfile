@@ -18,6 +18,7 @@ ENV LANGUAGE ja_JP:ja
 ENV LC_ALL ja_JP.UTF-8
 
 # dotfiles
-COPY .devcontainer/dotfiles/.emacs.d/init.el /root/.emacs.d/init.el
+COPY --chown=node:node .devcontainer/dotfiles/.emacs.d/init.el /home/node/.emacs.d/init.el
 
+USER node
 EXPOSE 4200
