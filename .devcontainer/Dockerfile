@@ -4,21 +4,22 @@ ARG VARIANT=15.13-buster-slim
 # image
 FROM node:${VARIANT}
 
-# tools
+# setup
 RUN apt-get update && apt-get install -y \
-  locales-all \
   emacs \
+  curl \
   git \
+  # 日本語化
+  locales \
+  && localedef -i ja_JP -c -f UTF-8 -A /usr/share/locale/locale.alias ja_JP.UTF-8 \
+  && ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && echo Asia/Tokyo > /etc/timezone \
+  # delete cache
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-# 日本語化
 ENV LANG ja_JP.UTF-8
-ENV LANGUAGE ja_JP:ja
-ENV LC_ALL ja_JP.UTF-8
 
 # dotfiles
 COPY --chown=node:node .devcontainer/dotfiles/.emacs.d/init.el /home/node/.emacs.d/init.el
 
 USER node
-EXPOSE 4200
